@@ -1,12 +1,9 @@
-import java.io._
-import java.net.Socket
-import java.nio.file.{Paths, Files}
 import java.util.Base64
 
 /**
   * Created by Caleb Prior on 30-Dec-15.
   */
-class ServerListener(socketHandler: SocketHandler, server: ServerTrait) extends Runnable {
+class ServerListener(socketHandler: SocketHandler, server: ServerTrait, messageHandler: MessageHandler) extends Runnable {
   val ipAddress = socketHandler.getIpAddress
   val port = socketHandler.getPort
   var studentId = "b486d209d797bffeeb7e1fd3b62923902e4922ddce8eb4cc4646017d1680a52c"
@@ -30,28 +27,11 @@ class ServerListener(socketHandler: SocketHandler, server: ServerTrait) extends 
   }
 
   def handleMessage(message: String): Unit = {
-    if(isWriteFile(message)){
-      handleWriteFile(message)
-    } else if (isKillService(message)) {
+    if (isKillService(message)) {
       killService()
     } else {
-      println("WORKER: " + Thread.currentThread.getId + " unknown message")
+      messageHandler.handleMessage(message)
     }
-  }
-
-  def isWriteFile(message:String): Boolean = {
-    message.startsWith("WRITE_FILE")
-  }
-
-  def handleWriteFile(firstLine:String):Unit = {
-    var fileName = socketHandler.readLine().split(':')(1).trim
-    var length = Integer.parseInt(socketHandler.readLine().split(':')(1).trim())
-
-    var bytesIn = socketHandler.readBytes(length)
-
-    var bytes = Base64.getDecoder.decode(bytesIn.toString("UTF-8"))
-
-    FileIOHelper.writeFile("testServer", bytes)
   }
 
   def isKillService(message: String): Boolean = {
