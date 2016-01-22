@@ -1,41 +1,59 @@
 import java.io._
 import java.net.Socket
+import java.nio.file.{Paths, Files}
+import java.util.Base64
 
 /**
   * Created by Caleb Prior on 30-Dec-15.
   */
-class ServerListener(socket: Socket, server: ServerTrait) extends Runnable {
-  var bufferIn = new BufferedReader(new InputStreamReader(socket.getInputStream))
-  var bufferOut = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream)))
-  val ipAddress = socket.getLocalAddress.toString.drop(1)
-  val port = socket.getLocalPort
+class ServerListener(socketHandler: SocketHandler, server: ServerTrait) extends Runnable {
+  val ipAddress = socketHandler.getIpAddress
+  val port = socketHandler.getPort
   var studentId = "b486d209d797bffeeb7e1fd3b62923902e4922ddce8eb4cc4646017d1680a52c"
 
   def run(): Unit = {
     println("WORKER: " + Thread.currentThread.getId + " started")
 
     try {
-      while (!socket.isClosed) {
-        if (socket.getInputStream.available() > 0) {
+      while (socketHandler.isOpen) {
+        if (socketHandler.hasContent) {
           var message = ""
-          message = bufferIn.readLine()
+          message = socketHandler.readLine()
           println("WORKER: " + Thread.currentThread.getId + " received message: " + message)
-
           handleMessage(message)
         }
       }
     } catch {
       case e:Exception =>
-        println("WORKER: " + Thread.currentThread.getId + " EXCEPTION " + e.getMessage)
+        println("WORKER: " + Thread.currentThread.getId + " EXCEPTION " + e.getMessage + " " + e.getStackTrace.toString)
     }
   }
 
   def handleMessage(message: String): Unit = {
-    if (isKillService(message)) {
+    if(isWriteFile(message)){
+      handleWriteFile(message)
+    } else if (isKillService(message)) {
       killService()
     } else {
       println("WORKER: " + Thread.currentThread.getId + " unknown message")
     }
+  }
+
+  def isWriteFile(message:String): Boolean = {
+    message.startsWith("WRITE_FILE")
+  }
+
+  def handleWriteFile(firstLine:String):Unit = {
+    var fileName = socketHandler.readLine().split(':')(1).trim
+    var length = Integer.parseInt(socketHandler.readLine().split(':')(1).trim())
+
+    var bytesIn = socketHandler.readBytes(length)
+
+    var bytes = Base64.getDecoder.decode(bytesIn.toString("UTF-8"))
+
+    println(bytes)
+
+    Files.write(Paths.get("fromServer.txt"), bytes)
   }
 
   def isKillService(message: String): Boolean = {
@@ -44,6 +62,6 @@ class ServerListener(socket: Socket, server: ServerTrait) extends Runnable {
 
   def killService(): Unit = {
     server.shutdown()
-    socket.close()
+    socketHandler.close()
   }
 }

@@ -5,7 +5,7 @@ trait ServerTrait {
   def shutdown():Unit
 }
 
-class Server extends ServerTrait{
+object Server extends ServerTrait{
   var running: Boolean = true
   var poolSize: Int = 15
   var port: Int = -1
@@ -18,9 +18,9 @@ class Server extends ServerTrait{
 
     while(running){
       try{
-        val socket = serverSocket.accept()
+        val socketHandler = new SocketHandler(serverSocket.accept())
         println("CHAT SERVER: Connection Received")
-        pool.execute(new ServerListener(socket, this))
+        pool.execute(new ServerListener(socketHandler, this))
       } catch {
         case e: Exception =>
           println("CHAT SERVER: Shutting down")
