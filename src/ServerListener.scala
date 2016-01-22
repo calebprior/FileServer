@@ -51,9 +51,7 @@ class ServerListener(socketHandler: SocketHandler, server: ServerTrait) extends 
 
     var bytes = Base64.getDecoder.decode(bytesIn.toString("UTF-8"))
 
-    println(bytes)
-
-    Files.write(Paths.get("fromServer.txt"), bytes)
+    FileIOHelper.writeFile("testServer", bytes)
   }
 
   def isKillService(message: String): Boolean = {

@@ -1,4 +1,3 @@
-import java.io._
 import java.net.{InetAddress, Socket}
 import java.nio.file.{Paths, Files}
 import java.util.Base64
@@ -11,10 +10,10 @@ import scala.io.BufferedSource
 object EchoClient {
   def main(args: Array[String]) {
 //    val s = new Socket(InetAddress.getByName("178.62.121.108"), 443)
-    
+
     val message = io.StdIn.readLine("Enter FileName> ")
 
-    var byteArray:Array[Byte] = Files.readAllBytes(Paths.get(message))
+    var byteArray:Array[Byte] = FileIOHelper.readFile(message)
 
     val conn = new SocketHandler(new Socket(InetAddress.getByName("localhost"), 400))
 

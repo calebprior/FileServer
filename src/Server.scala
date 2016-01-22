@@ -36,7 +36,6 @@ object Server extends ServerTrait{
     System.exit(0)
   }
 
-
   def Setup(args: Array[String]): Unit = {
     val portNumber = args(0)
 

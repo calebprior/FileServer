@@ -1,6 +1,5 @@
 import java.io.{ByteArrayOutputStream, PrintStream, InputStream}
 import java.net.Socket
-import java.nio.charset.Charset
 
 /**
   * Created by Caleb Prior on 22-Jan-16.
