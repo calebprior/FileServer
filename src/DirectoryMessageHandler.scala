@@ -5,11 +5,14 @@ import java.util.Base64
   */
 class DirectoryMessageHandler(socketHandler: SocketHandler) extends MessageHandler(socketHandler){
   def handleMessage(msg: String): Unit = {
-    if(isWriteFile(msg)){
-      handleWriteFile(msg)
-    } else {
-      println("WORKER: " + Thread.currentThread.getId + " unknown message")
+    MessageType.getMessageType(msg) match {
+      case MessageType.LookUp => handleLookup()
+      case MessageType.None => println("WORKER: " + Thread.currentThread.getId + " unknown message")
     }
+  }
+
+  def handleLookup():Unit = {
+
   }
 
   def isWriteFile(message:String): Boolean = {

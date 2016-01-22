@@ -2,19 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1b80b424-e87a-4def-b638-abde21325d4e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/DirectoryMessageHandler.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/DirectoryServer.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/MessageHandler.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ServerTrait.scala" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/FileServer/Server$.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/FileServer/Server.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Server.scala" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/FileServer/EchoClient$.class" afterPath="$PROJECT_DIR$/out/production/FileServer/EchoClient$.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/FileServer/ServerListener.class" afterPath="$PROJECT_DIR$/out/production/FileServer/ServerListener.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/FileServer/ServerTrait.class" afterPath="$PROJECT_DIR$/out/production/FileServer/ServerTrait.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/FileServer/SocketHandler.class" afterPath="$PROJECT_DIR$/out/production/FileServer/SocketHandler.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Messages.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ServerListener.scala" afterPath="$PROJECT_DIR$/src/ServerListener.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DirectoryMessageHandler.scala" afterPath="$PROJECT_DIR$/src/DirectoryMessageHandler.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ServerTrait.scala" afterPath="$PROJECT_DIR$/src/ServerTrait.scala" />
     </list>
     <ignored path="FileServer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,26 +28,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DirectoryServer.scala" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DirectoryServer.scala">
+      <file leaf-file-name="EchoClient.scala" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/EchoClient.scala">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#38#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ServerTrait.scala" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ServerTrait.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.7094595">
-              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#38#0" expanded="true" />
-              </folding>
+              <caret line="22" column="86" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="86" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -65,7 +42,17 @@
         <entry file="file://$PROJECT_DIR$/src/DirectoryMessageHandler.scala">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+              <caret line="18" column="36" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Messages.scala" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Messages.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.6882682">
+              <caret line="28" column="13" selection-start-line="28" selection-start-column="7" selection-end-line="28" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -92,9 +79,10 @@
         <option value="$PROJECT_DIR$/src/MessageHandlerTrait.scala" />
         <option value="$PROJECT_DIR$/src/MessageHandler.scala" />
         <option value="$PROJECT_DIR$/src/ServerListener.scala" />
-        <option value="$PROJECT_DIR$/src/DirectoryMessageHandler.scala" />
         <option value="$PROJECT_DIR$/src/DirectoryServer.scala" />
         <option value="$PROJECT_DIR$/src/ServerTrait.scala" />
+        <option value="$PROJECT_DIR$/src/DirectoryMessageHandler.scala" />
+        <option value="$PROJECT_DIR$/src/Messages.scala" />
       </list>
     </option>
   </component>
@@ -766,16 +754,16 @@
       <updated>1451472345337</updated>
       <workItem from="1451472362847" duration="729000" />
       <workItem from="1451473666007" duration="6942000" />
-      <workItem from="1453464336746" duration="15834000" />
+      <workItem from="1453464336746" duration="18417000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23505000" />
+    <option name="totallyTimeSpent" value="26088000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -784,10 +772,10 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32827735" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827735" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18336888" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18336888" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -980,14 +968,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/EchoClient.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/FileIOHelper.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.36871508">
@@ -1012,31 +992,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DirectoryMessageHandler.scala">
+    <entry file="file://$PROJECT_DIR$/src/ServerTrait.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.074324325">
+          <caret line="3" column="3" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="3" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DirectoryServer.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.5407821">
+          <caret line="22" column="1" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ServerTrait.scala">
+    <entry file="file://$PROJECT_DIR$/src/DirectoryMessageHandler.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.7094595">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="36" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/EchoClient.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="86" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="86" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Messages.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6882682">
+          <caret line="28" column="13" selection-start-line="28" selection-start-column="7" selection-end-line="28" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
