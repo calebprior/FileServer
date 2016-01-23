@@ -7,6 +7,7 @@ class DirectoryMessageHandler(socketHandler: SocketHandler) extends MessageHandl
   def handleMessage(msg: String): Unit = {
     MessageType.getMessageType(msg) match {
       case MessageType.LookUp => handleLookup()
+      case MessageType.WriteFile => handleWriteFile()
       case MessageType.None => println("WORKER: " + Thread.currentThread.getId + " unknown message")
     }
   }
@@ -15,11 +16,7 @@ class DirectoryMessageHandler(socketHandler: SocketHandler) extends MessageHandl
 
   }
 
-  def isWriteFile(message:String): Boolean = {
-    message.startsWith("WRITE_FILE")
-  }
-
-  def handleWriteFile(firstLine:String):Unit = {
+  def handleWriteFile():Unit = {
     var fileName = socketHandler.readLine().split(':')(1).trim
     var length = Integer.parseInt(socketHandler.readLine().split(':')(1).trim())
 
@@ -30,3 +27,5 @@ class DirectoryMessageHandler(socketHandler: SocketHandler) extends MessageHandl
     FileIOHelper.writeFile("testServer", bytes)
   }
 }
+
+class DirectoryEntry(filePath: String, fileId: Int, fileServerId: Int)

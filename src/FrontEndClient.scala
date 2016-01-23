@@ -1,13 +1,12 @@
 import java.net.{InetAddress, Socket}
-import java.nio.file.{Paths, Files}
 import java.util.Base64
 
-import scala.io.BufferedSource
+import Messages.WriteFile
 
 /**
  * Created by Caleb Prior on 12-Oct-15.
  */
-object EchoClient {
+object FrontEndClient {
   def main(args: Array[String]) {
 //    val s = new Socket(InetAddress.getByName("178.62.121.108"), 443)
 
@@ -20,7 +19,7 @@ object EchoClient {
     println(byteArray.toString)
     var asStr = Base64.getEncoder.encode(byteArray)
 
-    conn.sendLines("WRITE_FILE\n" + "filename:"+"test.txt\n" + "length:"+ asStr.length)
+    conn.sendLines(new WriteFile("test.txt", asStr.length).asString)
     conn.sendBytes(asStr)
   }
 }

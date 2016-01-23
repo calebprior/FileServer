@@ -1,5 +1,3 @@
-import java.util.Base64
-
 /**
   * Created by Caleb Prior on 30-Dec-15.
   */

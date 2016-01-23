@@ -8,25 +8,26 @@ trait Message {
 
 object MessageType extends Enumeration {
   type MessageType = Value
-  val LookUp, None = Value
+  val LookUp, WriteFile, None = Value
 
   def getMessageType(firstLine:String):MessageType.MessageType = {
     if(firstLine.startsWith("LOOKUP")) return MessageType.LookUp
+    if(firstLine.startsWith("WRITE_FILE")) return MessageType.WriteFile
 
     MessageType.None
   }
 }
 
-class Messages {
+object Messages {
   class LookUp(fileName:String) extends Message {
     def asString: String = {
       "LOOKUP:"+fileName
     }
   }
 
-  class WriteFile(fileName:String, length:Int, data:Array[Byte]) extends Message{
+  class WriteFile(fileName:String, length:Int) extends Message{
     def asString: String = {
-      "LOOKUP:"+fileName
+      "WRITE_FILE\n" + "Filename:" + fileName + "\n" + "Length:" + length
     }
   }
 }
