@@ -1,32 +1,25 @@
 /**
   * Created by Caleb Prior on 22-Jan-16.
   */
-
-trait Message {
-  def asString: String
-}
-
-object MessageType extends Enumeration {
-  type MessageType = Value
-  val LookUp, WriteFile, None = Value
-
-  def getMessageType(firstLine:String):MessageType.MessageType = {
-    if(firstLine.startsWith("LOOKUP")) return MessageType.LookUp
-    if(firstLine.startsWith("WRITE_FILE")) return MessageType.WriteFile
-
-    MessageType.None
-  }
-}
-
 object Messages {
-  class LookUp(fileName:String) extends Message {
-    def asString: String = {
-      "LOOKUP:"+fileName
+  trait Message {
+    def toString: String
+  }
+
+  class LookUp(fileName:String, read:Boolean) extends Message {
+    override def toString: String = {
+      "LOOKUP\n" + "FILENAME:" + fileName + "\nACCESS_TYPE:" + (if(read) "READ" else "FALSE")
+    }
+  }
+
+  class LookUpResponse(entry: DirectoryEntry) extends Message {
+    override def toString: String = {
+      "LOOKUP_RESPONSE\n" + "FILENAME:" + entry.getFilePath + "\nFILE_ID:" + entry.getFileId + "\nNODE_ID:" + entry.getFileServerId
     }
   }
 
   class WriteFile(fileName:String, length:Int) extends Message{
-    def asString: String = {
+    override def toString: String = {
       "WRITE_FILE\n" + "Filename:" + fileName + "\n" + "Length:" + length
     }
   }
