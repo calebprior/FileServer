@@ -4,9 +4,12 @@ import java.util.concurrent.Executors
 /**
   * Created by Caleb Prior on 23-Jan-16.
   */
-class FileServer extends ServerTrait{
+class FileServer extends ServerTrait{4
+  var primaryNode:Boolean = false
+
   def setup(args: Array[String]): Unit = {
     val portNumber = args(0)
+    primaryNode = Integer.parseInt(args(1)) > 0
 
     try{
       port = Integer.parseInt(portNumber)
@@ -21,6 +24,7 @@ class FileServer extends ServerTrait{
 
   def acceptNewConnection(socket: Socket): Unit = {
     val socketHandler = new SocketHandler(socket)
-    pool.execute(new ServerListener(socketHandler, this, new FileServerMessageHandler(socketHandler)))
+    pool.execute(new ServerListener(socketHandler, this, new FileServerMessageHandler(socketHandler, primaryNode)))
   }
 }
+
