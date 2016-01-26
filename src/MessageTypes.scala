@@ -3,10 +3,11 @@
   */
 object MessageTypes extends Enumeration {
   type MessageType = Value
-  val LookUp, WriteFile, ReadFile, None = Value
+  val LookUp, LookUpResponse, WriteFile, ReadFile, None = Value
 
   def getMessageType(firstLine:String):MessageTypes.MessageType = {
     if(firstLine.startsWith("LOOKUP")) return MessageTypes.LookUp
+    if(firstLine.startsWith("LOOKUP_RESPONSE")) return MessageTypes.LookUpResponse
     if(firstLine.startsWith("WRITE_FILE")) return MessageTypes.WriteFile
     if(firstLine.startsWith("READ_FILE")) return MessageTypes.ReadFile
 
