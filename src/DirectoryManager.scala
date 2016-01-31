@@ -13,13 +13,13 @@ class DirectoryManager {
   }
 
   def addNewEntry(fileName:String, nodeId:Int): DirectoryEntry ={
-    var newEntry = new DirectoryEntry(fileName, getNextId, nodeId)
+    val newEntry = new DirectoryEntry(fileName, getNextId, nodeId)
     directory = newEntry :: directory
     newEntry
   }
 
   def addEntry(fileName:String, fileId:Int, nodeId:Int): DirectoryEntry = {
-    var newEntry = new DirectoryEntry(fileName, fileId, nodeId)
+    val newEntry = new DirectoryEntry(fileName, fileId, nodeId)
     directory = newEntry :: directory
     newEntry
   }

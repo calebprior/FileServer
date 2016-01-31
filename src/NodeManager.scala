@@ -7,8 +7,7 @@ class NodeManager {
   var primaryNodeList:List[NodeGroup] = List()
 
   def getRandomPrimary:Node = {
-    val rnd = new GenRandInt(100, 200)
-    val randomInt = rnd.next
+    null
   }
 
   def getRandomInt(lowerBound:Int, upperBound:Int):Int = {
