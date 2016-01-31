@@ -20,7 +20,8 @@ class ServerListener(socketHandler: SocketHandler, server: ServerTrait, messageH
       }
     } catch {
       case e:Exception =>
-        println("WORKER: " + Thread.currentThread.getId + " EXCEPTION " + e.getMessage + " " + e.getStackTrace.toString)
+        println("WORKER: " + Thread.currentThread.getId + " EXCEPTION " + e.getMessage)
+        e.printStackTrace()
     }
   }
 

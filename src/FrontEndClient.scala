@@ -22,13 +22,18 @@ object FrontEndClient {
 
    // conn.sendLines(new Messages.LookUp(message, true).toString)
 
-    conn.sendLines(new Messages.WriteFile("testing", byteArray.length).toString)
-    conn.sendBytes(asStr)
+//    conn.sendLines(new Messages.WriteFile(message, asStr.length).toString)
+//    conn.sendBytes(asStr)
 
-    while(conn.isConnected){
-      if(conn.hasContent){
-        println(conn.readLine())
-      }
-    }
+
+    conn.sendLines(new Messages.ReadFile(message).toString)
+
+    print(conn.readLine())
+    print(conn.readLine())
+    val length = Integer.parseInt(conn.readLine().split(':')(1).trim())
+    print(length)
+    val bytes = conn.readBytes(length)
+    val decodedBytes = Base64.getDecoder.decode(bytes.toString("UTF-8"))
+    FileIOHelper.writeFile("fileRead", decodedBytes)
   }
 }

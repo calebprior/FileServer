@@ -1,3 +1,4 @@
+import java.io.{FileOutputStream, BufferedOutputStream}
 import java.nio.file.{Paths, Files}
 
 /**
@@ -10,6 +11,11 @@ object FileIOHelper {
   }
 
   def writeFile(fileName: String, bytes: Array[Byte]):Unit = {
-    Files.write(Paths.get(fileName), bytes)
+    //Files.write(Paths.get(fileName), bytes)
+
+    var outStream = new BufferedOutputStream(new FileOutputStream(fileName))
+    outStream.write(bytes)
+    outStream.flush()
+    outStream.close()
   }
 }
