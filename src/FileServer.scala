@@ -6,6 +6,7 @@ import java.util.concurrent.Executors
   */
 object FileServer extends ServerTrait{
   var primaryNode:Boolean = false
+  var fileManager:FileManager = new FileManager("")
 
   def setup(args: Array[String]): Unit = {
     val portNumber = args(0)
@@ -24,7 +25,7 @@ object FileServer extends ServerTrait{
 
   def acceptNewConnection(socket: Socket): Unit = {
     val socketHandler = new SocketHandler(socket)
-    pool.execute(new ServerListener(socketHandler, this, new FileServerMessageHandler(socketHandler, primaryNode)))
+    pool.execute(new ServerListener(socketHandler, this, new FileServerMessageHandler(socketHandler, primaryNode, fileManager)))
   }
 }
 
