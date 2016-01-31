@@ -4,7 +4,7 @@ import java.util.concurrent.Executors
 /**
   * Created by Caleb Prior on 23-Jan-16.
   */
-class FileServer extends ServerTrait{
+object FileServer extends ServerTrait{
   var primaryNode:Boolean = false
 
   def setup(args: Array[String]): Unit = {

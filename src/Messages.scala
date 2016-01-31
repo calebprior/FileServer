@@ -8,7 +8,7 @@ object Messages {
 
   class LookUp(fileName:String, read:Boolean) extends Message {
     override def toString =
-      "LOOKUP\n" + "FILENAME:" + fileName + "\nACCESS_TYPE:" + (if(read) "READ" else "FALSE"
+      "LOOKUP\n" + "FILENAME:" + fileName + "\nACCESS_TYPE:" + (if(read) "READ" else "FALSE")
   }
 
   class LookUpResponse(entry: DirectoryEntry) extends Message {
