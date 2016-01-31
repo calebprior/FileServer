@@ -16,13 +16,29 @@ object Messages {
       "LOOKUP_RESPONSE\n" + "FILENAME:" + entry.getFilePath + "\nFILE_ID:" + entry.getFileId + "\nNODE_ID:" + entry.getFileServerId
   }
 
-  class WriteFile(fileName:String, length:Int) extends Message{
+  class WriteFile(fileName:String, length:Int) extends Message {
     override def toString =
       "WRITE_FILE\n" + "Filename:" + fileName + "\n" + "Length:" + length
   }
 
-  class ReadFile(fileName:String) extends Message{
+  class WriteFileResponse(fileName:String) extends Message {
+    override def toString =
+      "WRITE_FILE_RESPONSE\n" + "Filename:" + fileName + "\nSuccess"
+  }
+
+
+  class ReadFile(fileName:String) extends Message {
     override def toString =
       "READ_FILE\n" + "Filename:" + fileName
+  }
+
+  class ReadFileResponse(fileName:String, length:Int) extends Message {
+    override def toString =
+      "READ_FILE_RESPONSE\n" + "Filename:" + fileName + "\nLength:" + length
+  }
+
+  class ErrorFileNotFound(fileName:String) extends Message {
+    override def toString =
+      "ERROR\n" + "Message:" + "FileNotFound - " + fileName
   }
 }

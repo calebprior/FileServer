@@ -1,5 +1,4 @@
 import java.util.Base64
-
 /**
   * Created by Caleb Prior on 23-Jan-16.
   */
@@ -24,13 +23,14 @@ class FileServerMessageHandler(socketHandler: SocketHandler, primaryNode:Boolean
     if(!fileManager.fileExists(fileName)){
       fileManager.addNewFile(fileName)
     }
-    FileIOHelper.writeFile("0", fileBytes)
+
+    fileManager.writeFile(fileName, fileBytes)
 
     if(primaryNode){
-
-    } else {
-
+      sendFileToReplicas(fileName, fileBytes)
     }
+
+    socketHandler.sendLines(new Messages.WriteFileResponse(fileName).toString)
   }
 
   def readInFileBytes(length:Int): Array[Byte] = {
@@ -38,7 +38,24 @@ class FileServerMessageHandler(socketHandler: SocketHandler, primaryNode:Boolean
     Base64.getDecoder.decode(bytesIn.toString("UTF-8"))
   }
 
-  def handleReadFile(): Unit ={
+  def sendBytes(fileBytes:Array[Byte]): Unit = {
+    val encoded = Base64.getEncoder.encode(fileBytes)
+    socketHandler.sendBytes(encoded)
+  }
 
+  def sendFileToReplicas(fileName: String, fileBytes: Array[Byte]) = {
+
+  }
+
+  def handleReadFile(): Unit = {
+    val fileName = socketHandler.readLine().split(':')(1).trim
+
+    if(fileManager.fileExists(fileName)){
+      val fileBytes = fileManager.getFileBytes(fileName)
+      socketHandler.sendLines(new Messages.ReadFileResponse(fileName, fileBytes.length).toString)
+      sendBytes(fileBytes)
+    } else {
+      socketHandler.sendLines(new Messages.ErrorFileNotFound(fileName).toString)
+    }
   }
 }
